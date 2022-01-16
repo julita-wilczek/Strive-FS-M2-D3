@@ -1,25 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- 
         EXERCISE: 
         You are creating a website for a Travel Agency.
-        In thins page you will add destinations of places you're dreaming to go to in the near future!
+        In this page you will add destinations of places you're dreaming to go to in the near future!
+      
        
-        
-        Ex 9) Create a section "Last Minute", in which you'll display the pictures of the destinations as Cards
-        Ex 10) Create a "Testimonial" section, in which the user can find several feedbacks from fake customers
-        Ex 11) Create a footer with the company informations and a "Contact Us" button
-
-        Ex 11) Create a button next to each section to collapse and reopen the given section
-        Ex 12) Create a method that counts the number of "travels" on the page
-        Ex 13) Create a modal view with a message and a email field
-        Ex 14) When the user clicks on "contact us" the modal is displayed
-        Ex 15) Create a function that adds a "HOT" badge to all the "Welcome Summer" offers
-        Ex 16) Create a function to delete all "cards" from the page
       -->
 
     <!--
@@ -33,10 +26,94 @@ Ex 3) Add a Jumbotron section with the name and the claim of the tour operator a
       integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spartan:wght@400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Spartan", sans-serif;
+      }
+      #welcome .card-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 5; /* number of lines to show */
+        line-clamp: 5;
+        -webkit-box-orient: vertical;
+      }
+      .jumbotron {
+        background: linear-gradient(90deg, #fc466b 0%, #3f5efb 100%);
+        color: whitesmoke;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+      h2 {
+        text-transform: uppercase;
+        background: -webkit-linear-gradient(top left, #fc466b, #3f5efb);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+      }
+
+
+      #welcome img {
+        max-height: 250px;
+        object-fit: cover;
+        object-position: center 70%;
+      }
+
+      .marketing .col-lg-4 {
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+      .marketing h2 {
+        font-weight: 400;
+      }
+      .marketing .col-lg-4 p {
+        margin-right: 0.75rem;
+        margin-left: 0.75rem;
+      }
+
+      .marketing h5 + p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* number of lines to show */
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
+
+      .badge-hot {
+        background: -webkit-radial-gradient(#fc466b, #3f5efb);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-transform: uppercase;
+        color: whitesmoke;
+        font-size: small;
+      }
+
+      h5 {
+        vertical-align: middle;
+      }
+
+      h5 > .badge {
+        vertical-align: middle;
+      }
+
+      footer {
+        background: -webkit-radial-gradient(#fc466b, #3f5efb);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+      }
+    </style>
   </head>
 
   <body>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">
         <img
@@ -65,21 +142,33 @@ Ex 3) Add a Jumbotron section with the name and the claim of the tour operator a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
+            <a class="nav-link" href="#week-deal">Deal of the week</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link" href="#welcome">Welcome Summer</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link">Disabled</a>
+            <a class="nav-link" href="#day-deal">Deal of the day</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#last-minute">Last minute</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#testimonials">Testimonials</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="deleteCards()">Delete cards</a>
           </li>
         </ul>
       </div>
     </nav>
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <h1 class="display-4">Magic Tours</h1>
-        <p class="lead">Never cease to amaze!</p>
+        <h1 class="display-4">Magical Mystery Tours</h1>
+        <p class="lead">Waiting to take you away</p>
       </div>
     </div>
 
@@ -87,17 +176,76 @@ Ex 3) Add a Jumbotron section with the name and the claim of the tour operator a
          In this section you should have:
             - 4 destinations per row when the screen is very large col-xl 
             - 3 destinations per row when you are on a tablet (or a smaller window) col-md-
-            - 2 destinations per row when you are on a small screen //DOESN'T WORK
-        -->
-    <div class="container" id="deal-week">
-      <h2>Deal of the Week</h2>
-      <div class="row">
-        <div class="col-6 col-sm-4 col-xl-3">Deal 1</div>
-        <div class="col-6 col-sm-4 col-xl-3">Deal 2</div>
-        <div class="col-6 col-sm-4 col-xl-3">Deal 3</div>
-        <div class="col-6 col-sm-4 col-xl-3">Deal 4</div>
+            - 2 destinations per row when you are on a small screen //DOESN'T WORK-->
+
+    <section id="deal-week">
+      <div class="container">
+        <h2>Deal of the Week</h2>
+        <div class="row text-center collapse show" id="deal-week-hide">
+          <div class="col-6 col-sm-4 col-xl-3">
+            <div class="card">
+              <img
+                class="card-img-top"
+                src="https://picsum.photos/id/100/150/100"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Turkey</h5>
+                <p class="card-text">01.08-03.08</p>
+                <a href="#" class="btn btn-outline-secondary">Buy</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-xl-3">
+            <div class="card">
+              <img
+                class="card-img-top"
+                src="https://picsum.photos/id/10/150/100"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Greece</h5>
+                <p class="card-text">04.07-14.07</p>
+                <a href="#" class="btn btn-outline-secondary">Buy</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-xl-3">
+            <div class="card">
+              <img
+                class="card-img-top"
+                src="https://picsum.photos/id/1006/150/100"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Spain</h5>
+                <p class="card-text">15.07-31.07</p>
+                <a href="#" class="btn btn-outline-secondary">Buy</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-xl-3">
+            <div class="card">
+              <img
+                class="card-img-top"
+                src="https://picsum.photos/id/1001/150/100"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Malta</h5>
+                <p class="card-text">10.06-20.06</p>
+                <a href="#" class="btn btn-outline-secondary">Buy</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Ex 11) Create a button next to each section to collapse and reopen the given section-->
+        <div class="text-center mt-2">
+          <a class="btn btn-outline-secondary btn-sm" data-toggle="collapse" href="#deal-week-hide" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Hide/Show
+          </a>
       </div>
-    </div>
+    </section>
 
     <!-- Ex 5) Implement the "Welcome Summer" section. In this section you'll propose 6 destinations to your user
       In this section you should have:
@@ -105,18 +253,125 @@ Ex 3) Add a Jumbotron section with the name and the claim of the tour operator a
           - 3 destinations per row when you are on a tablet (or a smaller window)
           - 2 destinations per row when you are on a small screen -->
 
-<!--Ex 8) Add to the Welcome Summer destinations section a large shadow-->
-    <div class="container shadow-lg p-3 mb-5 bg-white rounded" id="welcome-summer">
-      <h2>Welcome Summer</h2>
-      <div class="row">
-        <div class="col-6 col-sm-4 col-xl-2">Destination 1</div>
-        <div class="col-6 col-sm-4 col-xl-2">Destination 2</div>
-        <div class="col-6 col-sm-4 col-xl-2">Destination 3</div>
-        <div class="col-6 col-sm-4 col-xl-2">Destination 4</div>
-        <div class="col-6 col-sm-4 col-xl-2">Destination 5</div>
-        <div class="col-6 col-sm-4 col-xl-2">Destination 5</div>
+    <!--Ex 8) Add to the Welcome Summer destinations section a large shadow
+    Ex 15) Create a function that adds a "HOT" badge to all the "Welcome Summer" offers-->
+    
+    <section id="welcome">
+      <div class="container shadow-lg py-4 mb-5 bg-white rounded my-5">
+        <h2 class="text-center">Welcome Summer</h2>
+        <div class="row no-gutters collapse show" id="welcome-hide">
+          <div class="col-12"><img
+          class="w-100"
+          src="https://i.picsum.photos/id/1083/5472/3648.jpg?hmac=CtOxgXc6Oe3TQvKBXtPsKVT9Z2Yg7SJKWVlgWPeMBUs"
+        /></div>
+          <div class="col-6 col-sm-4 col-xl-2 ml-n3">
+            <div class="card border-0">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Turkey <span class="badge badge-pill badge-hot">HOT</span>
+                </h5>
+                <p class="card-text">
+                  Whether you come to Turkey for a city break, a beach holiday
+                  or a cultural road trip, Turkey's best destinations await you.
+                  Turkey will welcome you with open arms and its treasures and
+                  riches will leave you speechless.
+                </p>
+                <a href="#" class="btn btn-outline-secondary">Read more</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-xl-2">
+            <div class="card border-0">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Greece <span class="badge badge-pill badge-hot">HOT</span>
+                </h5>
+                <p class="card-text">
+                  Known for its plethora of ancient ruins, whitewashed villages,
+                  sunny beaches, tasty cuisine and friendly atmosphere, it is no
+                  wonder that Greece ranks among Europe’s top travel
+                  destinations. But the reason that tourism exists in the first
+                  place is that it’s just so beautiful here.
+                </p>
+                <a href="#" class="btn btn-outline-secondary">Read more</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-xl-2">
+            <div class="card border-0">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Spain <span class="badge badge-pill badge-hot">HOT</span>
+                </h5>
+                <p class="card-text">
+                  There are castles and mountains, big cities to get lost in and
+                  isolated stretches of coastline: but which is the perfect
+                  romantic Spanish destination for you? Let's take a tender look
+                  at the romantic destinations in Spain
+                </p>
+                <a href="#" class="btn btn-outline-secondary">Read more</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-xl-2">
+            <div class="card border-0">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Italy <span class="badge badge-pill badge-hot">HOT</span>
+                </h5>
+                <p class="card-text">
+                  Whether you're looking for an all-inclusive holiday to Italy
+                  or just a place to rest your head, there are hundreds of
+                  luxury coastal hotels to choose from. Check out these dreamy
+                  locations that offer the best sea views
+                </p>
+                <a href="#" class="btn btn-outline-secondary">Read more</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-xl-2">
+            <div class="card border-0">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Malta <span class="badge badge-pill badge-hot">HOT</span>
+                </h5>
+                <p class="card-text">
+                  Unlike many other Mediterranean destinations, a holiday in
+                  Malta offers you a lot of possibilities even outside of the
+                  high season. Outdoor activities such as biking or hiking are
+                  very popular during the rest of the year and many people flock
+                  to cultural and historical sites to learn more about
+                </p>
+                <a href="#" class="btn btn-outline-secondary">Read more</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-xl-2">
+            <div class="card border-0">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Portugal <span class="badge badge-pill badge-hot">HOT</span>
+                </h5>
+                <p class="card-text">
+                  Whether you’re travelling as a family, a couple or on a solo
+                  adventure, Portugal is a perfect year-round holiday
+                  destination, with activities and attractions to delight all
+                  types of traveller.
+                </p>
+                <a href="#" class="btn btn-outline-secondary">Read more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <a class="btn btn-outline-secondary btn-sm" data-toggle="collapse" href="#welcome-hide" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Hide/Show
+          </a>
       </div>
-    </div>
+      </div>
+      
+
+    </section>
 
     <!--Ex 6) Implement a "Deal of the day" section. In this section you'll have:
     - 66% of the page with a picture of the destination
@@ -124,29 +379,307 @@ Ex 3) Add a Jumbotron section with the name and the claim of the tour operator a
 
     <!--  Ex 7) Make the "Deal of the day" section disappear on mobile screens -->
 
-
-    <div class="container d-none d-sm-block" id="day-deal">
+    <section id="day-deal">
+      <div class="container d-none d-sm-block">
         <h2>Deal of the day</h2>
-        <div class="row">
-          <div class="col-8"><img src="https://images.unsplash.com/photo-1472108653939-927cd6aba6d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="img-fluid"/></div>
-          <div class="col-4"><div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Israel beaches</h5>
-              <p class="card-text">See all the most beautiful beaches of the Holy Land - from the Mediterranean Sea, via Dead Sea to Red Sea</p>
+        <div class="row collapse show" id="deal-day-hide">
+          <div class="col-8">
+            <img
+              src="https://images.unsplash.com/photo-1472108653939-927cd6aba6d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+              class="img-fluid"
+            />
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Israeli beaches package</h5>
+                <p class="card-text">
+                  See all the most beautiful beaches of the Holy Land - from the
+                  Mediterranean Sea, via Dead Sea to Red Sea
+                </p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">11.02.2022 -25.02.2022</li>
+                <li class="list-group-item">1000 USD</li>
+              </ul>
+              <div class="card-body">
+                <a href="#" class="card-link">Buy here</a>
+              </div>
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">11.02.2022 -25.02.2022</li>
-              <li class="list-group-item">1000 USD</li>
-    
-            </ul>
-            <div class="card-body">
-              <a href="#" class="card-link">Buy here</a>
+          </div>
+        </div>
+        <div class="text-center py-2">
+          <a class="btn btn-outline-secondary btn-sm" data-toggle="collapse" href="#deal-day-hide" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Hide/Show
+          </a>
+      </div>
+      </div>
+    </section>
+    <!--Ex 9) Create a section "Last Minute", in which you'll display the pictures of the destinations as Cards-->
+
+    <section id="last-minute">
+      <div class="container my-5">
+        <h2>Last minute</h2>
+        <div class="row collapse show" id="last-minute-hide">
+          <div class="col-6 col-sm-4 col-xl-3">
+            <div class="card">
+              <img
+                class="card-img-top"
+                src="https://picsum.photos/id/108/150/100"
+                alt="Card image cap"
+              />
+              <div class="card-header text-center"><h5>Sri Lanka</h5></div>
+              <div class="card-body text-center">
+                <p class="card-text">
+                  Discover rain forests, beaches and diverse cultures of the
+                  magical Sri Lanka.
+                </p>
+              </div>
+              <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item">full-board</li>
+                <li class="list-group-item">16.01-30.01</li>
+                <li class="list-group-item">
+                  <a href="#" class="btn btn-outline-secondary">Buy</a>
+                </li>
+              </ul>
             </div>
-          </div></div>
+          </div>
+          <div class="col-6 col-sm-4 col-xl-3">
+            <div class="card">
+              <img
+                class="card-img-top"
+                src="https://picsum.photos/id/1069/150/100"
+                alt="Card image cap"
+              />
+              <div class="card-header text-center"><h5>Bali</h5></div>
+              <div class="card-body text-center">
+                <p class="card-text">
+                  The Hanging Gardens of Bali, a luxurious destination in the
+                  heart of the jungle.
+                </p>
+              </div>
+              <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item">all inclusive</li>
+                <li class="list-group-item">20.01-31.01</li>
+                <li class="list-group-item">
+                  <a href="#" class="btn btn-outline-secondary">Buy</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-xl-3">
+            <div class="card">
+              <img
+                class="card-img-top"
+                src="https://picsum.photos/id/1065/150/100"
+                alt="Card image cap"
+              />
+              <div class="card-header text-center"><h5>Jordan</h5></div>
+              <div class="card-body text-center">
+                <p class="card-text">
+                  Breathtaking tour of the ancient city of Petra, Wadi Rum and
+                  Dead Sea.
+                </p>
+              </div>
+              <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item">all inclusive</li>
+                <li class="list-group-item">15.01-20.01</li>
+                <li class="list-group-item">
+                  <a href="#" class="btn btn-outline-secondary">Buy</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-xl-3">
+            <div class="card">
+              <img
+                class="card-img-top"
+                src="https://picsum.photos/id/1057/150/100"
+                alt="Card image cap"
+              />
+              <div class="card-header text-center"><h5>Iran</h5></div>
+              <div class="card-body text-center">
+                <p class="card-text">
+                  Explore the beautiful cities and uncover Persian history at
+                  the impressive Persepolis.
+                </p>
+              </div>
+              <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item">half-board</li>
+                <li class="list-group-item">01.02-14.02</li>
+                <li class="list-group-item">
+                  <a href="#" class="btn btn-outline-secondary">Buy</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="text-center py-2">
+          <a class="btn btn-outline-secondary btn-sm" data-toggle="collapse" href="#last-minute-hide" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Hide/Show
+          </a>
+      </div>
+      </div>
+    </section>
+    <!--Ex 10) Create a "Testimonial" section, in which the user can find several feedbacks from fake customers-->
+    <section id="testimonials">
+      <div class="container marketing my-5 shadow-lg">
+        <div class="row pt-5 collapse show" id="review-hide">
+          <div class="col-lg-4">
+            <img
+              class="rounded-circle"
+              src="https://picsum.photos/id/177/200"
+              alt="Maggie"
+              width="140"
+              height="140"
+            />
+            <h5 class="pt-3">Maggie, New York</h5>
+            <p>
+              We had the most remarkable family tour with Magical Mystery Tours.
+              Not only everything was perfect, but we felt, in every instance,
+              that our guides and our gulet crew truly cared about us, both the
+              kids and adults, and did their best to make this trip memorable.
+            </p>
+            <p>
+              <a class="btn btn-light" href="#" role="button">Read more</a>
+            </p>
+          </div>
+          <div class="col-lg-4">
+            <img
+              class="rounded-circle"
+              src="https://picsum.photos/id/203/200"
+              alt="John"
+              width="140"
+              height="140"
+            />
+            <h5 class="pt-3">John, London</h5>
+            <p>
+              The holiday of a life time - our gulet adventure in the Dodecanese
+              Greek Islands was without a doubt our favourite family trip. The
+              comfort and beauty of the gulet, the incredibly caring crew, the
+              delicious food, the history we learned from our competent and
+              friendly leader, along with the stunning beauty of the islands.
+            </p>
+            <p>
+              <a class="btn btn-light" href="#" role="button">Read more</a>
+            </p>
+          </div>
+          <div class="col-lg-4">
+            <img
+              class="rounded-circle"
+              src="https://picsum.photos/id/1005/200"
+              alt="Anna"
+              width="140"
+              height="140"
+            />
+            <h5 class="pt-3">Anna, Rome</h5>
+            <p>
+              Our gulet cruise from Kos to Patmos was everything and more than
+              expected. Exceptional guides attended to each guest's interests
+              and needs and were exceptional hosts.
+            </p>
+            <p>
+              <a class="btn btn-light" href="#" role="button">Read more</a>
+            </p>
+          </div>
+        </div>
+        <div class="text-center pb-3">
+          <a class="btn btn-outline-secondary btn-sm" data-toggle="collapse" href="#review-hide" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Hide/Show
+          </a>
+      </div>
+      </div>
+    </section>
+    <hr />
+    <!--Ex 11) Create a footer with the company informations and a "Contact Us" button
+    Ex 13) Create a modal view with a message and a email field
+    Ex 14) When the user clicks on "contact us" the modal is displayed-->
+    <footer id="contact">
+      <div class="container my-5">
+        <div class="text-center">
+          <p>magical@mystery.tour | 555 666 777 | liverpool, united kingdom</p>
+          <div
+            class="btn btn-light btn-sm"
+            data-toggle="modal"
+            data-target="#exampleModal"
+          >
+            Contact Us
+          </div>
+          
+        </div>
+        <div class="text-center">
+      </div>
+      </div>
+    </footer>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="contact-form"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="contact-form">Send us your message</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-row">
+                <div class="col-6 py-2">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="First name"
+                  />
+                </div>
+                <div class="col-6 py-2">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Last name"
+                  />
+                </div>
+                <div class="form-group col-12 py-2">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="inputEmail4"
+                    placeholder="Email"
+                  />
+                </div>
+                <div class="form-group col-12">
+                  <textarea
+                    class="form-control"
+                    id="exampleFormControlTextarea1"
+                    placeholder="Your message"
+                    rows="5"
+                  ></textarea>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Send</button>
+          </div>
         </div>
       </div>
-
-
+    </div>
+    
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -157,5 +690,25 @@ Ex 3) Add a Jumbotron section with the name and the claim of the tour operator a
       integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
       crossorigin="anonymous"
     ></script>
+    <script>
+      /*Ex 16) Create a function to delete all "cards" from the page*/
+
+      function deleteCards() {
+        let cards = document.querySelectorAll(".card")
+
+        for (let card of cards) {
+         card.remove()
+        }
+
+      }
+// Ex 12) Create a method that counts the number of "travels" on the page
+      function countTravels() {
+        let travels = document.querySelectorAll(".card")
+        alert (`There are ${travels.length} travels on this page`)
+      }
+
+      countTravels()
+
+    </script>
   </body>
 </html>
